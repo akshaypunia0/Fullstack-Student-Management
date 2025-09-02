@@ -1,0 +1,42 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+.cache/
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Environment files
+.env
+.env.*
+!.env.example   # example file ko ignore mat karo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Editor specific files
+.vscode/
+.idea/
+*.swp
+
+# Coverage / test
+coverage/
+*.lcov
+
+# Temporary
+tmp/
+temp/
+
+# Local database / storage
+*.sqlite
+*.sqlite-journal
