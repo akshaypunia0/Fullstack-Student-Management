@@ -20,7 +20,7 @@ const Dashboard = () => {
     const fetchStudents = async () => {
 
         try {
-            const data = await axios.get('http://localhost:5000/api/student/all', {
+            const data = await axios.get('api/student/all', {
                 withCredentials: true
             })
             console.log("All student data", data.data.students);
@@ -41,7 +41,7 @@ const Dashboard = () => {
     const logout = async() => {
 
         try {
-            const response = await axios.post("http://localhost:5000/api/user/logout", {}, {
+            const response = await axios.post("api/user/logout", {}, {
                 withCredentials: true
             })
             
@@ -56,6 +56,7 @@ const Dashboard = () => {
         navigate("/")
 
     }
+
 
     return (
         <div className="w-[100%] min-h-screen flex bg-gray-700">
@@ -93,7 +94,7 @@ const Dashboard = () => {
                 {activeTab === 'allStudents' && (
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {students.map((student) => (
-                            <StudentCard key={student._id} student={student} />
+                            <StudentCard key={student._id} student={student}/>
                         ))}
                     </div>
                 )}

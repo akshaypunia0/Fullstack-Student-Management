@@ -77,6 +77,7 @@ const getStudentByEmail = async (req, res) => {
 
 
 const deleteStudent = async (req, res) => {
+    console.log("Delete route hit with id:", req.params.id);
     try {
         const { id } = req.params
 

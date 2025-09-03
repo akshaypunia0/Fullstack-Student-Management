@@ -27,7 +27,7 @@ const StudentForm = () => {
         // API call to add student
 
         try {
-            const createdStudent = await axios.post("http://localhost:5000/api/student", formData, {
+            const createdStudent = await axios.post("api/student", formData, {
                 withCredentials: true
             })
 
