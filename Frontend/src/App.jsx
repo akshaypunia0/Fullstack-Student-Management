@@ -1,13 +1,15 @@
 import React from 'react'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import { Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   return (
     <div className='w-[100%] h-[100vh] flex justify-center items-center bg-gray-700'>
+      <ToastContainer />
 
       <Routes>
         <Route path='/' element={<Login />} />

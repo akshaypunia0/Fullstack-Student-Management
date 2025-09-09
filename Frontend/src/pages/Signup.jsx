@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Input from '../components/Input';
 import Button from '../components/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -10,6 +11,8 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("Admin")
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,15 +24,20 @@ const Signup = () => {
                 withCredentials: true
             })
 
+            toast.success(response.data.message)
+            navigate("/")
+
             console.log("signup response", response.data);
 
         } catch (error) {
             if (error.response) {
                 console.log("Registration error", error.response.data);
+                toast.success(error.response.data.message)
 
             }
 
             else console.log("Something wrong in registeation", error);
+            toast.success(error.message)
 
         }
 

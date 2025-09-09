@@ -3,6 +3,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -22,6 +23,7 @@ const Login = () => {
                 }
             )
             console.log("Login response", response.data);
+            toast.success(response.data.message)
 
             localStorage.setItem("isLoggedIn", "true")
             navigate("/admin")
@@ -30,9 +32,11 @@ const Login = () => {
 
         } catch (error) {
             if (error.response) {
-                console.log("Login error..,", error.response.data);
+                console.log("Login error...", error.response.data);
+                toast.error(error.response.data.message)
             }
             else console.error('Login error:', error.message);
+            toast.error(error.message)
         }
 
         // console.log(`Email: ${email}, Password: ${password}`);

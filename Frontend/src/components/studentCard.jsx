@@ -1,30 +1,33 @@
 import React from 'react';
-import Button from './Button';
 import axios from 'axios';
 
-const StudentCard = ({ student }) => {
+const StudentCard = ({ student, onDelete }) => {
 
-  const onDelete = async (id) => {
-    console.log(id)
+  // const onDelete = async (id) => {
+  //   console.log(id)
 
-    try {
-      const data = await axios.delete(`api/student/delete/${id}`, 
-        {
-          withCredentials: true
-        }
-      )
+  //   try {
+  //     const data = await axios.delete(`api/student/delete/${id}`, 
+  //       {
+  //         withCredentials: true
+  //       }
+  //     )
 
-      console.log("Student deleted", data);
+  //     // let newList = prevList.filter(student => student._id !== id)
 
-    } catch (error) {
-      if (error.response) {
-        console.log("Error deleting student", error.response.data);
+  //     // updateList(newList)
 
-      }
-      else console.log("Something went wrong while deleting student");
+  //     console.log("Student deleted", data);
 
-    }
-  }
+  //   } catch (error) {
+  //     if (error.response) {
+  //       console.log("Error deleting student", error.response.data);
+
+  //     }
+  //     else console.log("Something went wrong while deleting student");
+
+  //   }
+  // }
   return (
     <div className="bg-white p-4 rounded-md shadow hover:shadow-lg transition cursor-pointer">
       <h4 className="text-xl font-semibold text-gray-800">{student.name}</h4>
@@ -33,11 +36,10 @@ const StudentCard = ({ student }) => {
       <p className="text-gray-600">City: {student.city}</p>
       <p className="text-gray-600">Course: {student.course}</p>
       <div className='flex justify-between'>
-        <button
+        {/* <button
           className='bg-yellow-300 w-[30%] h-[30px] mt-[10px] rounded hover:bg-yellow-400'
           type='button'
-        //  onClick={updateData}
-        >Edit</button>
+        >Edit</button> */}
 
 
         <button
