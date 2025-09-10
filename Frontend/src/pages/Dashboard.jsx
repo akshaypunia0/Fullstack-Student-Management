@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Dashboard = () => {
+    const API = import.meta.env.BACKEND_API_URL;
     const [activeTab, setActiveTab] = useState('addStudent'); // 'addStudent' or 'allStudents'
     const [students, setStudents] = useState([]);
     const navigate = useNavigate()
@@ -21,7 +22,7 @@ const Dashboard = () => {
     const fetchStudents = async () => {
 
         try {
-            const { data } = await axios.get('api/student/all', {
+            const { data } = await axios.get(`${API}api/student/all`, {
                 withCredentials: true
             })
             console.log("All student data", data.students);
@@ -42,7 +43,7 @@ const Dashboard = () => {
     const logout = async() => {
 
         try {
-            const response = await axios.post("api/user/logout", {}, {
+            const response = await axios.post(`${API}api/user/logout`, {}, {
                 withCredentials: true
             })
             toast.success(response.data.message)
@@ -65,7 +66,7 @@ const Dashboard = () => {
         console.log(id)
     
         try {
-          const data = await axios.delete(`api/student/delete/${id}`, 
+          const data = await axios.delete(`${API}/api/student/delete/${id}`, 
             {
               withCredentials: true
             }

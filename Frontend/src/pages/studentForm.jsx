@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 
 const StudentForm = () => {
 
+    const API = import.meta.env.BACKEND_API_URL;
+
     let studentData = {
         name: '',
         email: '',
@@ -29,7 +31,7 @@ const StudentForm = () => {
         // API call to add student
 
         try {
-            const createdStudent = await axios.post("api/student", formData, {
+            const createdStudent = await axios.post(`${API}api/student`, formData, {
                 withCredentials: true
             })
 

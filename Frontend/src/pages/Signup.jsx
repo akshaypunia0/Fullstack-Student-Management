@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
 
+    const API = import.meta.env.BACKEND_API_URL;
+
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -20,7 +22,7 @@ const Signup = () => {
         const signupData = { username, email, password, role }
 
         try {
-            const response = await axios.post("api/user/register", signupData, {
+            const response = await axios.post(`${API}api/user/register`, signupData, {
                 withCredentials: true
             })
 
