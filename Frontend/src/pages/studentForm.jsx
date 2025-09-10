@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const StudentForm = () => {
 
@@ -32,14 +33,18 @@ const StudentForm = () => {
                 withCredentials: true
             })
 
+            toast.success(createdStudent.data.message)
+
             console.log("Created Student data", createdStudent);
             
 
         } catch (error) {
             if(error.response){
                 console.log("Error in sending data", error.response.data);
+                toast.success(error.response.data.message)
             }
             else console.log("something went wrong while sending student data");
+            toast.success(error.message)
             
         }
 

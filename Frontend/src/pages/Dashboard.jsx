@@ -72,15 +72,19 @@ const Dashboard = () => {
           )
     
           setStudents((prev) => prev.filter(student => student._id !== id))
+
+          toast.success(data.data.message)
     
           console.log("Student deleted", data);
     
         } catch (error) {
           if (error.response) {
             console.log("Error deleting student", error.response.data);
+            toast.success(error.response.data.message)
     
           }
           else console.log("Something went wrong while deleting student");
+          toast.success(error.message)
     
         }
       }
