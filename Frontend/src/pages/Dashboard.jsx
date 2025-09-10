@@ -22,7 +22,7 @@ const Dashboard = () => {
     const fetchStudents = async () => {
 
         try {
-            const { data } = await axios.get(`${API}api/student/all`, {
+            const { data } = await axios.get(`${API}/api/student/all`, {
                 withCredentials: true
             })
             console.log("All student data", data.students);
@@ -43,7 +43,7 @@ const Dashboard = () => {
     const logout = async() => {
 
         try {
-            const response = await axios.post(`${API}api/user/logout`, {}, {
+            const response = await axios.post(`${API}/api/user/logout`, {}, {
                 withCredentials: true
             })
             toast.success(response.data.message)
