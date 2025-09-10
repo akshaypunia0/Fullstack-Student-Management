@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Dashboard = () => {
-    const API = import.meta.env.BACKEND_API_URL;
+    const API = import.meta.env.VITE_BACKEND_API_URL;
     const [activeTab, setActiveTab] = useState('addStudent'); // 'addStudent' or 'allStudents'
     const [students, setStudents] = useState([]);
     const navigate = useNavigate()

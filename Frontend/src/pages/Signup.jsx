@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
 
-    const API = import.meta.env.BACKEND_API_URL;
+    const API = import.meta.env.VITE_BACKEND_API_URL;
 
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");

@@ -6,7 +6,9 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 
 const Login = () => {
-    const API = import.meta.env.BACKEND_API_URL;
+    console.log("Env variable value",import.meta.env.VITE_BACKEND_API_URL);
+
+    const API = import.meta.env.VITE_BACKEND_API_URL;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
@@ -18,7 +20,7 @@ const Login = () => {
         console.log("Logindata", loginData);
 
         try {
-            const response = await axios.post(`${API}api/user/login`, loginData,
+            const response = await axios.post(`${API}/api/user/login`, loginData,
                 {
                     withCredentials: true
                 }
