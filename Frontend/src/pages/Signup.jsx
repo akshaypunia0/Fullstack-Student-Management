@@ -29,8 +29,6 @@ const Signup = () => {
             toast.success(response.data.message)
             navigate("/")
 
-            console.log("signup response", response.data);
-
         } catch (error) {
             if (error.response) {
                 console.log("Registration error", error.response.data);

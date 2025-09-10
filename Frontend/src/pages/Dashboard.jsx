@@ -26,8 +26,8 @@ const Dashboard = () => {
                 withCredentials: true
             })
             console.log("All student data", data.students);
-            console.log(typeof(data.students));
-            
+            console.log(typeof (data.students));
+
             setStudents(data.students);
 
         } catch (error) {
@@ -35,19 +35,19 @@ const Dashboard = () => {
                 console.log("Data fetching error", error.response.data);
             }
             else console.log("something went wrong while fetching data");
-            
+
         }
-        
+
     };
 
-    const logout = async() => {
+    const logout = async () => {
 
         try {
             const response = await axios.post(`${API}/api/user/logout`, {}, {
                 withCredentials: true
             })
             toast.success(response.data.message)
-            
+
         } catch (error) {
             if (error.response) {
                 console.log("Logout error", error.response.data);
@@ -55,7 +55,7 @@ const Dashboard = () => {
             }
             else console.log("something went wrong while logout");
             toast.success(error.message)
-            
+
         }
         localStorage.removeItem("isLoggedIn")
         navigate("/")
@@ -64,31 +64,31 @@ const Dashboard = () => {
 
     const deleteHandler = async (id) => {
         console.log(id)
-    
-        try {
-          const data = await axios.delete(`${API}/api/student/delete/${id}`, 
-            {
-              withCredentials: true
-            }
-          )
-    
-          setStudents((prev) => prev.filter(student => student._id !== id))
 
-          toast.success(data.data.message)
-    
-          console.log("Student deleted", data);
-    
+        try {
+            const data = await axios.delete(`${API}/api/student/delete/${id}`,
+                {
+                    withCredentials: true
+                }
+            )
+
+            setStudents((prev) => prev.filter(student => student._id !== id))
+
+            toast.success(data.data.message)
+
+            console.log("Student deleted", data);
+
         } catch (error) {
-          if (error.response) {
-            console.log("Error deleting student", error.response.data);
-            toast.success(error.response.data.message)
-    
-          }
-          else console.log("Something went wrong while deleting student");
-          toast.success(error.message)
-    
+            if (error.response) {
+                console.log("Error deleting student", error.response.data);
+                toast.success(error.response.data.message)
+
+            }
+            else console.log("Something went wrong while deleting student");
+            toast.success(error.message)
+
         }
-      }
+    }
 
 
     return (
@@ -122,7 +122,7 @@ const Dashboard = () => {
             </div>
 
             {/* Right Content */}
-            <div className="flex-1 p-6">
+            {/* <div className="flex-1 p-6">
                 {activeTab === 'addStudent' && <StudentForm />}
                 {activeTab === 'allStudents' && (
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -131,7 +131,19 @@ const Dashboard = () => {
                         ))}
                     </div>
                 )}
+            </div> */}
+
+
+            <div className="flex-1 p-6">
+                {activeTab === 'addStudent' && <StudentForm />}
+                {activeTab === 'allStudents' && students.length > 0 ? (<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {students.map((student) => (
+                        <StudentCard key={student._id} student={student} onDelete={deleteHandler} />
+                    ))}
+                </div>) : (<div>Student list is empty</div>)}
             </div>
+
+
         </div>
     );
 };
